@@ -161,6 +161,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Items";
             this.Text = "Items";
+            this.Load += new System.EventHandler(this.Items_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

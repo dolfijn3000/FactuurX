@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace FactuurX
 {
-    public partial class Items : Form
+    public partial class ProfileCreator : Form
     {
-        public Items()
+        public ProfileCreator()
         {
             InitializeComponent();
-        }
-
-        private void BTN_Save_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Items_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
