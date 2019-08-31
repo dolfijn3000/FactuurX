@@ -39,7 +39,6 @@
             this.BTN_Search = new System.Windows.Forms.Button();
             this.BTN_Save = new System.Windows.Forms.Button();
             this.BTN_Delete = new System.Windows.Forms.Button();
-            this.BTN_Add = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,6 +54,7 @@
             // 
             this.TXT_Name.Location = new System.Drawing.Point(326, 23);
             this.TXT_Name.Name = "TXT_Name";
+            this.TXT_Name.ReadOnly = true;
             this.TXT_Name.Size = new System.Drawing.Size(263, 20);
             this.TXT_Name.TabIndex = 1;
             // 
@@ -62,6 +62,7 @@
             // 
             this.TXT_referenceNumber.Location = new System.Drawing.Point(382, 52);
             this.TXT_referenceNumber.Name = "TXT_referenceNumber";
+            this.TXT_referenceNumber.ReadOnly = true;
             this.TXT_referenceNumber.Size = new System.Drawing.Size(263, 20);
             this.TXT_referenceNumber.TabIndex = 3;
             // 
@@ -78,6 +79,7 @@
             // 
             this.TXT_Price.Location = new System.Drawing.Point(326, 78);
             this.TXT_Price.Name = "TXT_Price";
+            this.TXT_Price.ReadOnly = true;
             this.TXT_Price.Size = new System.Drawing.Size(263, 20);
             this.TXT_Price.TabIndex = 5;
             // 
@@ -133,21 +135,11 @@
             this.BTN_Delete.Text = "Verwijder";
             this.BTN_Delete.UseVisualStyleBackColor = true;
             // 
-            // BTN_Add
-            // 
-            this.BTN_Add.Location = new System.Drawing.Point(204, 76);
-            this.BTN_Add.Name = "BTN_Add";
-            this.BTN_Add.Size = new System.Drawing.Size(75, 23);
-            this.BTN_Add.TabIndex = 12;
-            this.BTN_Add.Text = "toevoegen";
-            this.BTN_Add.UseVisualStyleBackColor = true;
-            // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 390);
-            this.Controls.Add(this.BTN_Add);
             this.Controls.Add(this.BTN_Delete);
             this.Controls.Add(this.BTN_Save);
             this.Controls.Add(this.BTN_Search);
@@ -180,6 +172,5 @@
         private System.Windows.Forms.Button BTN_Search;
         private System.Windows.Forms.Button BTN_Save;
         private System.Windows.Forms.Button BTN_Delete;
-        private System.Windows.Forms.Button BTN_Add;
     }
 }
