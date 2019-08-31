@@ -8,6 +8,9 @@ namespace FactuurX
 {
     public class Profile
     {
+        public string name;
+
+        public List<Customer> customers = new List<Customer>();
         public List<Item> Items = new List<Item>();
 
     }

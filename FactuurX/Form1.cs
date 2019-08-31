@@ -17,6 +17,8 @@ namespace FactuurX
         public Form1()
         {
             InitializeComponent();
+            EventManager eventManager = new EventManager();
+            eventManager.Setup();
         }
 
         private void bestandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -25,6 +27,21 @@ namespace FactuurX
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void NieuwToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ProfileCreator profileCreator = new ProfileCreator();
+            profileCreator.Show();
+
+            EventManager eventManager = new EventManager();
+
+            profileCreator.CreationCompleted += eventManager.OnCreatedProfile;
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

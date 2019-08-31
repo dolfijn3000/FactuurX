@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactuurX
 {
-    public class Customer
+    public class CustomEventArgs
     {
-        public string name;
+        public string text;
     }
 }

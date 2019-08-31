@@ -16,5 +16,17 @@ namespace FactuurX
         {
             InitializeComponent();
         }
+
+        public EventHandler<CustomEventArgs> CreationCompleted;
+        private void BTN_Ok_Click(object sender, EventArgs e)
+        {
+            if (CreationCompleted != null)
+                CreationCompleted(this, new CustomEventArgs() { text = TXT_Name.Text });
+        }
+
+        private void ProfileCreator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
