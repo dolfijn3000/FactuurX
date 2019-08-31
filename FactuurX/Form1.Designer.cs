@@ -34,25 +34,25 @@
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opslaanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.instellingenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TAB_Main = new System.Windows.Forms.TabControl();
-            this.TABP_General = new System.Windows.Forms.TabPage();
-            this.TABP_Items = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.bestandToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exporteerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opslaanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.profielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selecteerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nieuwToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.selecteerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TAB_Main = new System.Windows.Forms.TabControl();
+            this.TABP_General = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.TABP_Items = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.TAB_Main.SuspendLayout();
             this.TABP_General.SuspendLayout();
@@ -89,6 +89,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1447, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // bestandToolStripMenuItem
             // 
@@ -105,20 +106,75 @@
             // nieuwToolStripMenuItem
             // 
             this.nieuwToolStripMenuItem.Name = "nieuwToolStripMenuItem";
-            this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nieuwToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.nieuwToolStripMenuItem.Text = "Nieuw";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.openToolStripMenuItem.Text = "Open";
+            // 
+            // opslaanToolStripMenuItem
+            // 
+            this.opslaanToolStripMenuItem.Name = "opslaanToolStripMenuItem";
+            this.opslaanToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.opslaanToolStripMenuItem.Text = "Opslaan";
             // 
             // instellingenToolStripMenuItem
             // 
             this.instellingenToolStripMenuItem.Name = "instellingenToolStripMenuItem";
-            this.instellingenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.instellingenToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.instellingenToolStripMenuItem.Text = "Instellingen";
+            // 
+            // bestandToolStripMenuItem1
+            // 
+            this.bestandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exporteerToolStripMenuItem});
+            this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
+            this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
+            this.bestandToolStripMenuItem1.Text = "Bestand";
+            // 
+            // exporteerToolStripMenuItem
+            // 
+            this.exporteerToolStripMenuItem.Name = "exporteerToolStripMenuItem";
+            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exporteerToolStripMenuItem.Text = "exporteer";
+            // 
+            // profielToolStripMenuItem
+            // 
+            this.profielToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nieuwToolStripMenuItem1,
+            this.selecteerToolStripMenuItem,
+            this.itemsToolStripMenuItem,
+            this.klantenToolStripMenuItem});
+            this.profielToolStripMenuItem.Name = "profielToolStripMenuItem";
+            this.profielToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.profielToolStripMenuItem.Text = "Profiel";
+            // 
+            // nieuwToolStripMenuItem1
+            // 
+            this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.nieuwToolStripMenuItem1.Text = "nieuw";
+            // 
+            // selecteerToolStripMenuItem
+            // 
+            this.selecteerToolStripMenuItem.Name = "selecteerToolStripMenuItem";
+            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.selecteerToolStripMenuItem.Text = "selecteer";
+            // 
+            // itemsToolStripMenuItem
+            // 
+            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.itemsToolStripMenuItem.Text = "items";
+            // 
+            // klantenToolStripMenuItem
+            // 
+            this.klantenToolStripMenuItem.Name = "klantenToolStripMenuItem";
+            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.klantenToolStripMenuItem.Text = "klanten";
             // 
             // TAB_Main
             // 
@@ -144,6 +200,41 @@
             this.TABP_General.Text = "Algemeen";
             this.TABP_General.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(121, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Maak nieuwe klant";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Selecteer klant";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(46, 53);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(320, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Klant:";
+            // 
             // TABP_Items
             // 
             this.TABP_Items.Controls.Add(this.button4);
@@ -157,68 +248,14 @@
             this.TABP_Items.Text = "Items";
             this.TABP_Items.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // button4
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1404, 428);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Klant:";
-            // 
-            // bestandToolStripMenuItem1
-            // 
-            this.bestandToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exporteerToolStripMenuItem});
-            this.bestandToolStripMenuItem1.Name = "bestandToolStripMenuItem1";
-            this.bestandToolStripMenuItem1.Size = new System.Drawing.Size(61, 20);
-            this.bestandToolStripMenuItem1.Text = "Bestand";
-            // 
-            // exporteerToolStripMenuItem
-            // 
-            this.exporteerToolStripMenuItem.Name = "exporteerToolStripMenuItem";
-            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exporteerToolStripMenuItem.Text = "exporteer";
-            // 
-            // opslaanToolStripMenuItem
-            // 
-            this.opslaanToolStripMenuItem.Name = "opslaanToolStripMenuItem";
-            this.opslaanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.opslaanToolStripMenuItem.Text = "Opslaan";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(46, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(9, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Selecteer klant";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(121, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Maak nieuwe klant";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button4.Location = new System.Drawing.Point(111, 7);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Maak nieuw item";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -229,49 +266,13 @@
             this.button3.Text = "Voeg item toe";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // dataGridView1
             // 
-            this.button4.Location = new System.Drawing.Point(111, 7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Maak nieuw item";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // profielToolStripMenuItem
-            // 
-            this.profielToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nieuwToolStripMenuItem1,
-            this.selecteerToolStripMenuItem,
-            this.itemsToolStripMenuItem,
-            this.klantenToolStripMenuItem});
-            this.profielToolStripMenuItem.Name = "profielToolStripMenuItem";
-            this.profielToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.profielToolStripMenuItem.Text = "Profiel";
-            // 
-            // selecteerToolStripMenuItem
-            // 
-            this.selecteerToolStripMenuItem.Name = "selecteerToolStripMenuItem";
-            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.selecteerToolStripMenuItem.Text = "selecteer";
-            // 
-            // nieuwToolStripMenuItem1
-            // 
-            this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
-            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.nieuwToolStripMenuItem1.Text = "nieuw";
-            // 
-            // itemsToolStripMenuItem
-            // 
-            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.itemsToolStripMenuItem.Text = "items";
-            // 
-            // klantenToolStripMenuItem
-            // 
-            this.klantenToolStripMenuItem.Name = "klantenToolStripMenuItem";
-            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.klantenToolStripMenuItem.Text = "klanten";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 73);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1404, 428);
+            this.dataGridView1.TabIndex = 0;
             // 
             // Form1
             // 

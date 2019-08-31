@@ -12,12 +12,19 @@ namespace FactuurX
 {
     public partial class Form1 : Form
     {
+        public static Profile selectedProfile;
+
         public Form1()
         {
             InitializeComponent();
         }
 
         private void bestandToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

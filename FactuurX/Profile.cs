@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactuurX
 {
-    class Profile
+    public class Profile
     {
         public List<Item> Items = new List<Item>();
 

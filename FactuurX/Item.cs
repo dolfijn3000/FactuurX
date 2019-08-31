@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactuurX
 {
-    class Item
+    public class Item
     {
         public string name;
         public string referenceNumber;
