@@ -13,6 +13,8 @@ namespace FactuurX
     public partial class Form1 : Form
     {
         public static Profile selectedProfile;
+        public static Customer selectedCustomer = new Customer();
+
         EventManager eventManager = new EventManager();
 
         public Form1()
@@ -59,13 +61,32 @@ namespace FactuurX
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //open customer select screen
             CustomerSelect customerSelect = new CustomerSelect();
+
+            //add all customers to the list
             foreach(Customer customer in selectedProfile.customers)
             {
                 customerSelect.LB_Customers.Items.Add(customer.name);
             }
 
             customerSelect.Show();
+
+            //bind event
+            customerSelect.Selected += OnSelectedCustomer;
+        }
+
+        //when customer is selected
+        public void OnSelectedCustomer(object source, CustomEventArgs customEventArgs)
+        {
+            selectedCustomer.name = customEventArgs.text;
+
+            TXT_CustomerName.Text = selectedCustomer.name;
+        }
+
+        private void TXT_CustomerName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

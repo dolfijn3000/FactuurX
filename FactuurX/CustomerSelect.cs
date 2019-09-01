@@ -16,5 +16,13 @@ namespace FactuurX
         {
             InitializeComponent();
         }
+
+        public EventHandler<CustomEventArgs> Selected;
+        private void BTN_Ok_Click(object sender, EventArgs e)
+        {
+            if (Selected != null)
+                Selected(this, new CustomEventArgs() {text = LB_Customers.SelectedItem.ToString()});
+            this.Close();
+        }
     }
 }

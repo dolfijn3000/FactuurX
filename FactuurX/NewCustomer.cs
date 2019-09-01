@@ -27,6 +27,7 @@ namespace FactuurX
         {
             if (AddedCustomer != null)
                 AddedCustomer(this, new CustomEventArgs() { text = TXT_Name.Text });
+            this.Close();
         }
     }
 }

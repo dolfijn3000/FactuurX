@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 390);
+            this.ClientSize = new System.Drawing.Size(666, 390);
             this.Controls.Add(this.BTN_Delete);
             this.Controls.Add(this.BTN_Save);
             this.Controls.Add(this.BTN_Search);

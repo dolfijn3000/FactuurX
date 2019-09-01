@@ -13,6 +13,7 @@ namespace FactuurX
          
         }
 
+        //fired when we make a new profile
         public void OnCreatedProfile(object source, CustomEventArgs customEventArgs)
         {
             Profile newProfile = new Profile();
@@ -22,6 +23,7 @@ namespace FactuurX
             Form1.selectedProfile = newProfile;
         }
 
+        //when a new customer is created
         public void OnCreatedCustomer(object source, CustomEventArgs customEventArgs)
         {
             Customer customer = new Customer();

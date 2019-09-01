@@ -47,7 +47,7 @@
             this.TABP_General = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TXT_CustomerName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TABP_Items = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
@@ -191,7 +191,7 @@
             // 
             this.TABP_General.Controls.Add(this.button2);
             this.TABP_General.Controls.Add(this.button1);
-            this.TABP_General.Controls.Add(this.textBox1);
+            this.TABP_General.Controls.Add(this.TXT_CustomerName);
             this.TABP_General.Controls.Add(this.label3);
             this.TABP_General.Location = new System.Drawing.Point(4, 22);
             this.TABP_General.Name = "TABP_General";
@@ -221,13 +221,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // TXT_CustomerName
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
-            this.textBox1.TabIndex = 1;
+            this.TXT_CustomerName.Location = new System.Drawing.Point(46, 53);
+            this.TXT_CustomerName.Name = "TXT_CustomerName";
+            this.TXT_CustomerName.ReadOnly = true;
+            this.TXT_CustomerName.Size = new System.Drawing.Size(320, 20);
+            this.TXT_CustomerName.TabIndex = 1;
+            this.TXT_CustomerName.TextChanged += new System.EventHandler(this.TXT_CustomerName_TextChanged);
             // 
             // label3
             // 
@@ -321,7 +322,7 @@
         private System.Windows.Forms.ToolStripMenuItem opslaanToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TXT_CustomerName;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem profielToolStripMenuItem;

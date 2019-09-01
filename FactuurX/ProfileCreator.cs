@@ -22,6 +22,7 @@ namespace FactuurX
         {
             if (CreationCompleted != null)
                 CreationCompleted(this, new CustomEventArgs() { text = TXT_Name.Text });
+            this.Close();
         }
 
         private void ProfileCreator_Load(object sender, EventArgs e)
