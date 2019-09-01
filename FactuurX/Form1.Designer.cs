@@ -138,7 +138,7 @@
             // exporteerToolStripMenuItem
             // 
             this.exporteerToolStripMenuItem.Name = "exporteerToolStripMenuItem";
-            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.exporteerToolStripMenuItem.Text = "exporteer";
             // 
             // profielToolStripMenuItem
@@ -155,26 +155,26 @@
             // nieuwToolStripMenuItem1
             // 
             this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
-            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
             this.nieuwToolStripMenuItem1.Text = "nieuw";
             this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.NieuwToolStripMenuItem1_Click);
             // 
             // selecteerToolStripMenuItem
             // 
             this.selecteerToolStripMenuItem.Name = "selecteerToolStripMenuItem";
-            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.selecteerToolStripMenuItem.Text = "selecteer";
             // 
             // itemsToolStripMenuItem
             // 
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.itemsToolStripMenuItem.Text = "items";
             // 
             // klantenToolStripMenuItem
             // 
             this.klantenToolStripMenuItem.Name = "klantenToolStripMenuItem";
-            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.klantenToolStripMenuItem.Text = "klanten";
             // 
             // TAB_Main
@@ -209,6 +209,7 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Maak nieuwe klant";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

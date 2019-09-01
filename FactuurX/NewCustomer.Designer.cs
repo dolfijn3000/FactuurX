@@ -41,6 +41,7 @@
             this.BTN_Ok.TabIndex = 0;
             this.BTN_Ok.Text = "Ok";
             this.BTN_Ok.UseVisualStyleBackColor = true;
+            this.BTN_Ok.Click += new System.EventHandler(this.BTN_Ok_Click);
             // 
             // label1
             // 
@@ -68,6 +69,7 @@
             this.Controls.Add(this.BTN_Ok);
             this.Name = "NewCustomer";
             this.Text = "NewCustomer";
+            this.Load += new System.EventHandler(this.NewCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,6 +13,7 @@ namespace FactuurX
     public partial class Form1 : Form
     {
         public static Profile selectedProfile;
+        EventManager eventManager = new EventManager();
 
         public Form1()
         {
@@ -36,13 +37,23 @@ namespace FactuurX
             ProfileCreator profileCreator = new ProfileCreator();
             profileCreator.Show();
 
-            EventManager eventManager = new EventManager();
+         
 
             profileCreator.CreationCompleted += eventManager.OnCreatedProfile;
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            NewCustomer newCustomer = new NewCustomer();
+            newCustomer.Show();
+
+
+            newCustomer.AddedCustomer += eventManager.OnCreatedCustomer;
 
         }
     }

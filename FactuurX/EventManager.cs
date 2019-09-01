@@ -21,5 +21,14 @@ namespace FactuurX
             //temporary until there is a save system
             Form1.selectedProfile = newProfile;
         }
+
+        public void OnCreatedCustomer(object source, CustomEventArgs customEventArgs)
+        {
+            Customer customer = new Customer();
+            customer.name = customEventArgs.text;
+
+            Form1.selectedProfile.customers.Add(customer);
+
+        }
     }
 }

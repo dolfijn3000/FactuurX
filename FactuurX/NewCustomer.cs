@@ -16,5 +16,17 @@ namespace FactuurX
         {
             InitializeComponent();
         }
+
+        private void NewCustomer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public EventHandler<CustomEventArgs> AddedCustomer;
+        private void BTN_Ok_Click(object sender, EventArgs e)
+        {
+            if (AddedCustomer != null)
+                AddedCustomer(this, new CustomEventArgs() { text = TXT_Name.Text });
+        }
     }
 }
