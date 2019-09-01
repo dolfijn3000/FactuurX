@@ -56,5 +56,16 @@ namespace FactuurX
             newCustomer.AddedCustomer += eventManager.OnCreatedCustomer;
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerSelect customerSelect = new CustomerSelect();
+            foreach(Customer customer in selectedProfile.customers)
+            {
+                customerSelect.LB_Customers.Items.Add(customer.name);
+            }
+
+            customerSelect.Show();
+        }
     }
 }
