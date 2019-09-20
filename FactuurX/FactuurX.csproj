@@ -76,6 +76,12 @@
     <Compile Include="NewCustomer.Designer.cs">
       <DependentUpon>NewCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewItem.Designer.cs">
+      <DependentUpon>NewItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profile.cs" />
     <Compile Include="ProfileCreator.cs">
       <SubType>Form</SubType>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewCustomer.resx">
       <DependentUpon>NewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewItem.resx">
+      <DependentUpon>NewItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfileCreator.resx">
       <DependentUpon>ProfileCreator.cs</DependentUpon>

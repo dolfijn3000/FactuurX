@@ -15,6 +15,7 @@ namespace FactuurX
         public static Profile selectedProfile;
         public static Customer selectedCustomer = new Customer();
 
+        // here we put al our events.
         EventManager eventManager = new EventManager();
 
         public Form1()
@@ -87,6 +88,35 @@ namespace FactuurX
         private void TXT_CustomerName_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            NewItem newItem = new NewItem();
+            newItem.Show();
+            newItem.AddedItem += this.OnCreatedItem;
+        }
+
+        private void OnCreatedItem(object source, CustomEventArgs customEventArgs)
+        {
+            Item item = new Item();
+            item.name = customEventArgs.texts[0];
+            item.price =customEventArgs.texts[1];
+            item.referenceNumber = customEventArgs.texts[2];
+
+            selectedProfile.Items.Add(item);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Items itemsPage = new Items();
+            //add all customers to the list
+            foreach (Item customer in selectedProfile.Items)
+            {
+                itemsPage.LB_Items.Items.Add(customer.name);
+            }
+
+            itemsPage.Show();
         }
     }
 }

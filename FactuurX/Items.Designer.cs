@@ -34,10 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TXT_Price = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LB_Items = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.BTN_Search = new System.Windows.Forms.Button();
-            this.BTN_Save = new System.Windows.Forms.Button();
+            this.BTN_Add = new System.Windows.Forms.Button();
             this.BTN_Delete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -92,13 +92,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "prijs";
             // 
-            // listBox1
+            // LB_Items
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 49);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(186, 329);
-            this.listBox1.TabIndex = 6;
+            this.LB_Items.FormattingEnabled = true;
+            this.LB_Items.Location = new System.Drawing.Point(12, 49);
+            this.LB_Items.Name = "LB_Items";
+            this.LB_Items.Size = new System.Drawing.Size(186, 329);
+            this.LB_Items.TabIndex = 6;
             // 
             // textBox1
             // 
@@ -116,15 +116,15 @@
             this.BTN_Search.Text = "zoek";
             this.BTN_Search.UseVisualStyleBackColor = true;
             // 
-            // BTN_Save
+            // BTN_Add
             // 
-            this.BTN_Save.Location = new System.Drawing.Point(557, 355);
-            this.BTN_Save.Name = "BTN_Save";
-            this.BTN_Save.Size = new System.Drawing.Size(75, 23);
-            this.BTN_Save.TabIndex = 10;
-            this.BTN_Save.Text = "Opslaan";
-            this.BTN_Save.UseVisualStyleBackColor = true;
-            this.BTN_Save.Click += new System.EventHandler(this.BTN_Save_Click);
+            this.BTN_Add.Location = new System.Drawing.Point(579, 355);
+            this.BTN_Add.Name = "BTN_Add";
+            this.BTN_Add.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Add.TabIndex = 10;
+            this.BTN_Add.Text = "Voeg toe";
+            this.BTN_Add.UseVisualStyleBackColor = true;
+            this.BTN_Add.Click += new System.EventHandler(this.BTN_Save_Click);
             // 
             // BTN_Delete
             // 
@@ -141,10 +141,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 390);
             this.Controls.Add(this.BTN_Delete);
-            this.Controls.Add(this.BTN_Save);
+            this.Controls.Add(this.BTN_Add);
             this.Controls.Add(this.BTN_Search);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.LB_Items);
             this.Controls.Add(this.TXT_Price);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TXT_referenceNumber);
@@ -167,10 +167,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TXT_Price;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button BTN_Search;
-        private System.Windows.Forms.Button BTN_Save;
+        private System.Windows.Forms.Button BTN_Add;
         private System.Windows.Forms.Button BTN_Delete;
+        public System.Windows.Forms.ListBox LB_Items;
     }
 }

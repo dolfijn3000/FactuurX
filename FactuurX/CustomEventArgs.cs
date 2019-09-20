@@ -9,5 +9,6 @@ namespace FactuurX
     public class CustomEventArgs
     {
         public string text;
+        public List<string> texts = new List<string>();
     }
 }
