@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace FactuurX
     {
         public static Profile selectedProfile;
         public static Customer selectedCustomer = new Customer();
+        public static Invoice invoice = new Invoice();
 
         //all date for in the table
         DataTable dataTable = new DataTable();
@@ -26,7 +28,7 @@ namespace FactuurX
             InitializeComponent();
             EventManager eventManager = new EventManager();
 
-            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("naam", typeof(string));
             dataTable.Columns.Add("referentie nummer", typeof(string));
             dataTable.Columns.Add("prijs", typeof(string));
             eventManager.Setup();
@@ -133,6 +135,98 @@ namespace FactuurX
 
             dataTable.Rows.Add(item.name,item.referenceNumber,item.price);
 
+            DGV_Items.DataSource = dataTable;
+        }
+
+        private void opslaanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveHandler saveHandler = new SaveHandler();
+
+            saveHandler.SaveInvoice(DGV_Items);
+        }
+
+        private void opslaanToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveHandler saveHandler = new SaveHandler();
+
+            saveHandler.SaveProfile(selectedProfile);
+        }
+
+        private void selecteerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "factuur x bestand (*.FACTX)|*.FACTX";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            LoadHandler loadHandler = new LoadHandler();
+            loadHandler.LoadProfile(filePath);
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "factuur x bestand (*.FACTX)|*.FACTX";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            LoadHandler loadHandler = new LoadHandler();
+            loadHandler.LoadInvoice(filePath);
+
+            Refresh();
+        }
+
+        //refresh data
+        public void Refresh()
+        {
+            //load data from invoice
+            foreach(Item item in invoice.items)
+            {
+                dataTable.Rows.Add(item.name, item.referenceNumber, item.price);
+
+                
+            }
             DGV_Items.DataSource = dataTable;
         }
     }
