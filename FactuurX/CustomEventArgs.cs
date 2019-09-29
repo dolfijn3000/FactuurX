@@ -10,5 +10,6 @@ namespace FactuurX
     {
         public string text;
         public List<string> texts = new List<string>();
+        public Item item;
     }
 }

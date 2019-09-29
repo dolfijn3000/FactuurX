@@ -99,6 +99,7 @@
             this.LB_Items.Name = "LB_Items";
             this.LB_Items.Size = new System.Drawing.Size(186, 329);
             this.LB_Items.TabIndex = 6;
+            this.LB_Items.SelectedIndexChanged += new System.EventHandler(this.LB_Items_SelectedIndexChanged);
             // 
             // textBox1
             // 

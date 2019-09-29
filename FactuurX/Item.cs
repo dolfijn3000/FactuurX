@@ -10,7 +10,11 @@ namespace FactuurX
     {
         public string name;
         public string referenceNumber;
-        public double price;
+        public string price;
         
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

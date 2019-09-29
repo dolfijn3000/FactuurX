@@ -18,6 +18,8 @@ namespace FactuurX
 
         public EventHandler<CustomEventArgs> AddedItem;
         List<string> textList = new List<string>();
+
+        //add al information into a list and send it to the caller
         private void BTN_Ok_Click(object sender, EventArgs e)
         {
             textList.Add(TXT_Name.Text);

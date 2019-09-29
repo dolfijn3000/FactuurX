@@ -15,6 +15,9 @@ namespace FactuurX
         public static Profile selectedProfile;
         public static Customer selectedCustomer = new Customer();
 
+        //all date for in the table
+        DataTable dataTable = new DataTable();
+
         // here we put al our events.
         EventManager eventManager = new EventManager();
 
@@ -22,6 +25,10 @@ namespace FactuurX
         {
             InitializeComponent();
             EventManager eventManager = new EventManager();
+
+            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("referentie nummer", typeof(string));
+            dataTable.Columns.Add("prijs", typeof(string));
             eventManager.Setup();
         }
 
@@ -110,13 +117,23 @@ namespace FactuurX
         private void button3_Click(object sender, EventArgs e)
         {
             Items itemsPage = new Items();
+            itemsPage.SelectedItem += OnSelectedItem;
             //add all customers to the list
-            foreach (Item customer in selectedProfile.Items)
-            {
-                itemsPage.LB_Items.Items.Add(customer.name);
+            foreach (Item item in selectedProfile.Items)
+            {               
+                itemsPage.LB_Items.Items.Add(item);
             }
 
             itemsPage.Show();
+        }
+
+        private void OnSelectedItem(object source, CustomEventArgs customEventArgs)
+        {
+            Item item = customEventArgs.item;
+
+            dataTable.Rows.Add(item.name,item.referenceNumber,item.price);
+
+            DGV_Items.DataSource = dataTable;
         }
     }
 }

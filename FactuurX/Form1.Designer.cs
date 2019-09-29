@@ -52,12 +52,12 @@
             this.TABP_Items = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DGV_Items = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.TAB_Main.SuspendLayout();
             this.TABP_General.SuspendLayout();
             this.TABP_Items.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -243,7 +243,7 @@
             // 
             this.TABP_Items.Controls.Add(this.button4);
             this.TABP_Items.Controls.Add(this.button3);
-            this.TABP_Items.Controls.Add(this.dataGridView1);
+            this.TABP_Items.Controls.Add(this.DGV_Items);
             this.TABP_Items.Location = new System.Drawing.Point(4, 22);
             this.TABP_Items.Name = "TABP_Items";
             this.TABP_Items.Padding = new System.Windows.Forms.Padding(3);
@@ -272,14 +272,14 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // dataGridView1
+            // DGV_Items
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 73);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1404, 428);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            this.DGV_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Items.Location = new System.Drawing.Point(4, 73);
+            this.DGV_Items.Name = "DGV_Items";
+            this.DGV_Items.Size = new System.Drawing.Size(1404, 428);
+            this.DGV_Items.TabIndex = 0;
+            this.DGV_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // Form1
             // 
@@ -299,7 +299,7 @@
             this.TABP_General.ResumeLayout(false);
             this.TABP_General.PerformLayout();
             this.TABP_Items.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,7 +320,7 @@
         private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exporteerToolStripMenuItem;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DGV_Items;
         private System.Windows.Forms.ToolStripMenuItem opslaanToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
