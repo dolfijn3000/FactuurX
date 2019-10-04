@@ -41,6 +41,7 @@
             this.profielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nieuwToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selecteerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opslaanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TAB_Main = new System.Windows.Forms.TabControl();
@@ -53,12 +54,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.DGV_Items = new System.Windows.Forms.DataGridView();
-            this.opslaanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TAB_Preview = new System.Windows.Forms.TabPage();
+            this.WB_Preview = new System.Windows.Forms.WebBrowser();
+            this.BTN_Generate = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TAB_Main.SuspendLayout();
             this.TABP_General.SuspendLayout();
             this.TABP_Items.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).BeginInit();
+            this.TAB_Preview.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -113,14 +117,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // opslaanToolStripMenuItem
             // 
             this.opslaanToolStripMenuItem.Name = "opslaanToolStripMenuItem";
-            this.opslaanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.opslaanToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.opslaanToolStripMenuItem.Text = "Opslaan";
             this.opslaanToolStripMenuItem.Click += new System.EventHandler(this.opslaanToolStripMenuItem_Click);
             // 
@@ -159,33 +163,41 @@
             // nieuwToolStripMenuItem1
             // 
             this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
-            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
             this.nieuwToolStripMenuItem1.Text = "nieuw";
             this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.NieuwToolStripMenuItem1_Click);
             // 
             // selecteerToolStripMenuItem
             // 
             this.selecteerToolStripMenuItem.Name = "selecteerToolStripMenuItem";
-            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.selecteerToolStripMenuItem.Text = "open";
             this.selecteerToolStripMenuItem.Click += new System.EventHandler(this.selecteerToolStripMenuItem_Click);
+            // 
+            // opslaanToolStripMenuItem1
+            // 
+            this.opslaanToolStripMenuItem1.Name = "opslaanToolStripMenuItem1";
+            this.opslaanToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.opslaanToolStripMenuItem1.Text = "opslaan";
+            this.opslaanToolStripMenuItem1.Click += new System.EventHandler(this.opslaanToolStripMenuItem1_Click);
             // 
             // itemsToolStripMenuItem
             // 
             this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.itemsToolStripMenuItem.Text = "items";
             // 
             // klantenToolStripMenuItem
             // 
             this.klantenToolStripMenuItem.Name = "klantenToolStripMenuItem";
-            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.klantenToolStripMenuItem.Text = "klanten";
             // 
             // TAB_Main
             // 
             this.TAB_Main.Controls.Add(this.TABP_General);
             this.TAB_Main.Controls.Add(this.TABP_Items);
+            this.TAB_Main.Controls.Add(this.TAB_Preview);
             this.TAB_Main.Location = new System.Drawing.Point(13, 28);
             this.TAB_Main.Name = "TAB_Main";
             this.TAB_Main.SelectedIndex = 0;
@@ -286,12 +298,36 @@
             this.DGV_Items.TabIndex = 0;
             this.DGV_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
-            // opslaanToolStripMenuItem1
+            // TAB_Preview
             // 
-            this.opslaanToolStripMenuItem1.Name = "opslaanToolStripMenuItem1";
-            this.opslaanToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.opslaanToolStripMenuItem1.Text = "opslaan";
-            this.opslaanToolStripMenuItem1.Click += new System.EventHandler(this.opslaanToolStripMenuItem1_Click);
+            this.TAB_Preview.Controls.Add(this.BTN_Generate);
+            this.TAB_Preview.Controls.Add(this.WB_Preview);
+            this.TAB_Preview.Location = new System.Drawing.Point(4, 22);
+            this.TAB_Preview.Name = "TAB_Preview";
+            this.TAB_Preview.Padding = new System.Windows.Forms.Padding(3);
+            this.TAB_Preview.Size = new System.Drawing.Size(1414, 507);
+            this.TAB_Preview.TabIndex = 2;
+            this.TAB_Preview.Text = "factuur";
+            this.TAB_Preview.UseVisualStyleBackColor = true;
+            // 
+            // WB_Preview
+            // 
+            this.WB_Preview.Location = new System.Drawing.Point(6, 35);
+            this.WB_Preview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WB_Preview.Name = "WB_Preview";
+            this.WB_Preview.Size = new System.Drawing.Size(1402, 466);
+            this.WB_Preview.TabIndex = 0;
+            this.WB_Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB_Preview_DocumentCompleted);
+            // 
+            // BTN_Generate
+            // 
+            this.BTN_Generate.Location = new System.Drawing.Point(3, 6);
+            this.BTN_Generate.Name = "BTN_Generate";
+            this.BTN_Generate.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Generate.TabIndex = 1;
+            this.BTN_Generate.Text = "generate";
+            this.BTN_Generate.UseVisualStyleBackColor = true;
+            this.BTN_Generate.Click += new System.EventHandler(this.BTN_Generate_Click);
             // 
             // Form1
             // 
@@ -312,6 +348,7 @@
             this.TABP_General.PerformLayout();
             this.TABP_Items.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).EndInit();
+            this.TAB_Preview.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +382,9 @@
         private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klantenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opslaanToolStripMenuItem1;
+        private System.Windows.Forms.TabPage TAB_Preview;
+        private System.Windows.Forms.WebBrowser WB_Preview;
+        private System.Windows.Forms.Button BTN_Generate;
     }
 }
 

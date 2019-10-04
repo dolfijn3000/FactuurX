@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
-
+using HtmlAgilityPack;
+using FactuurX.Handlers;
 namespace FactuurX
 {
     public partial class Form1 : Form
@@ -16,6 +12,7 @@ namespace FactuurX
         public static Profile selectedProfile;
         public static Customer selectedCustomer = new Customer();
         public static Invoice invoice = new Invoice();
+        public static Settings settings = new Settings();
 
         //all date for in the table
         DataTable dataTable = new DataTable();
@@ -27,6 +24,8 @@ namespace FactuurX
         {
             InitializeComponent();
             EventManager eventManager = new EventManager();
+            StartupHandler startupHandler = new StartupHandler();
+            startupHandler.Startup();
 
             dataTable.Columns.Add("naam", typeof(string));
             dataTable.Columns.Add("referentie nummer", typeof(string));
@@ -228,6 +227,59 @@ namespace FactuurX
                 
             }
             DGV_Items.DataSource = dataTable;
+        }
+
+        private void WB_Preview_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        //generate html code for invoice
+        private void BTN_Generate_Click(object sender, EventArgs e)
+        {
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Assets\standart.html");
+
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.Load(path);
+
+            var table = doc.DocumentNode.SelectSingleNode("//table");
+
+            int totalPrice = 0;
+            int counter = 0;
+            for (int r = 0; r < DGV_Items.Rows.Count - 1; r++)
+            {
+                DataGridViewRow dgv_row = DGV_Items.Rows[r];
+                table.AppendChild(HtmlNode.CreateNode("<tr id="+counter.ToString()+"></tr>"));
+                var row = doc.GetElementbyId(counter.ToString());
+
+                //naam
+                row.AppendChild(HtmlNode.CreateNode("<th>"+ dgv_row.Cells["naam"].Value + "</th>"));
+                //refrentie nummer
+                row.AppendChild(HtmlNode.CreateNode("<th>" + dgv_row.Cells["naam"].Value + "</th>"));
+                //prijs
+                row.AppendChild(HtmlNode.CreateNode("<th>" + dgv_row.Cells["prijs"].Value + "</th>"));
+
+                string price = (string)dgv_row.Cells["prijs"].Value;
+                totalPrice += Int32.Parse(price);
+
+                counter++;
+            }
+            table.AppendChild(HtmlNode.CreateNode("<tr id='total price'></tr>"));
+            var lastRow = doc.GetElementbyId("total price");
+            lastRow.AppendChild(HtmlNode.CreateNode("<th></th>"));
+            lastRow.AppendChild(HtmlNode.CreateNode("<th>Totaal:</th>"));
+            lastRow.AppendChild(HtmlNode.CreateNode("<th>"+totalPrice+"</th>"));
+
+
+
+
+
+            WB_Preview.DocumentText = doc.DocumentNode.OuterHtml;
+        }
+
+        public void GenerateInvoiceHtml(string template)
+        {
+
         }
     }
 }

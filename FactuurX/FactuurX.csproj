@@ -33,9 +33,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.11.15.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.15\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +70,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\StartupHandler.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Items.cs">
@@ -71,7 +79,7 @@
     <Compile Include="Items.Designer.cs">
       <DependentUpon>Items.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoadHandler.cs" />
+    <Compile Include="Handlers\LoadHandler.cs" />
     <Compile Include="NewCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,7 +101,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveHandler.cs" />
+    <Compile Include="Handlers\SaveHandler.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="CustomerSelect.resx">
       <DependentUpon>CustomerSelect.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +131,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,6 +144,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\standart.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

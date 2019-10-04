@@ -17,6 +17,10 @@ namespace FactuurX
             StreamReader reader = new StreamReader(filePath);
             Form1.selectedProfile = (Profile)serializer.Deserialize(reader);
             reader.Close();
+
+            SaveHandler saveHandler = new SaveHandler();
+            Form1.settings.LastProfilePath = filePath;
+            saveHandler.SaveSettings();
         }
         public void LoadInvoice(string filePath)
         {
@@ -24,6 +28,15 @@ namespace FactuurX
 
             StreamReader reader = new StreamReader(filePath);
             Form1.invoice = (Invoice)serializer.Deserialize(reader);
+            reader.Close();
+        }
+
+        public void LoadSettings()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+            string AppdataPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            StreamReader reader = new StreamReader(AppdataPath + "\\FactuurX\\settings.FACTXS");
+            Form1.settings = (Settings)serializer.Deserialize(reader);
             reader.Close();
         }
     }

@@ -75,5 +75,16 @@ namespace FactuurX
                 }
             }
         }
+
+        public void SaveSettings()
+        {
+            string AppdataPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            XmlSerializer ser = new XmlSerializer(typeof(Settings));
+            TextWriter textWriter = new StreamWriter(AppdataPath + "\\FactuurX\\settings.FACTXS");
+
+            ser.Serialize(textWriter, Form1.settings);
+
+            textWriter.Close();
+        }
     }
 }
