@@ -5,6 +5,10 @@ using System.Reflection;
 using System.Windows.Forms;
 using HtmlAgilityPack;
 using FactuurX.Handlers;
+using PdfSharp.Pdf;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
+using PdfSharp;
+
 namespace FactuurX
 {
     public partial class Form1 : Form
@@ -244,7 +248,7 @@ namespace FactuurX
 
             var table = doc.DocumentNode.SelectSingleNode("//table");
 
-            int totalPrice = 0;
+            double totalPrice = 0;
             int counter = 0;
             for (int r = 0; r < DGV_Items.Rows.Count - 1; r++)
             {
@@ -260,7 +264,7 @@ namespace FactuurX
                 row.AppendChild(HtmlNode.CreateNode("<th>" + dgv_row.Cells["prijs"].Value + "</th>"));
 
                 string price = (string)dgv_row.Cells["prijs"].Value;
-                totalPrice += Int32.Parse(price);
+                totalPrice += double.Parse(price);
 
                 counter++;
             }
@@ -275,6 +279,10 @@ namespace FactuurX
 
 
             WB_Preview.DocumentText = doc.DocumentNode.OuterHtml;
+            PageSize pageSize = new PageSize();
+
+            PdfDocument pdf = PdfGenerator.GeneratePdf(doc.DocumentNode.OuterHtml,PageSize.Letter);
+            pdf.Save("F:\\FactuurX\\generatedpdfs\\document.pdf");
         }
 
         public void GenerateInvoiceHtml(string template)
