@@ -27,7 +27,7 @@ namespace FactuurX
         public void OnCreatedCustomer(object source, CustomEventArgs customEventArgs)
         {
             Customer customer = new Customer();
-            customer.name = customEventArgs.text;
+            customer = customEventArgs.customer;
 
             Form1.selectedProfile.customers.Add(customer);
 

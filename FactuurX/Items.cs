@@ -25,7 +25,7 @@ namespace FactuurX
             if (item != null)
             {
                 if (SelectedItem != null)
-                    SelectedItem(this, new CustomEventArgs() { item = item});
+                    SelectedItem(this, new CustomEventArgs() { item = item, amount = TXT_Amount.Text });
                 this.Close();
             }
         }

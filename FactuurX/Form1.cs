@@ -8,6 +8,7 @@ using FactuurX.Handlers;
 using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using PdfSharp;
+using IronPdf;
 
 namespace FactuurX
 {
@@ -33,7 +34,9 @@ namespace FactuurX
 
             dataTable.Columns.Add("naam", typeof(string));
             dataTable.Columns.Add("referentie nummer", typeof(string));
-            dataTable.Columns.Add("prijs", typeof(string));
+            dataTable.Columns.Add("aantal", typeof(string));
+            dataTable.Columns.Add("eenheidprijs", typeof(string));
+            dataTable.Columns.Add("prijs", typeof(double));
             eventManager.Setup();
         }
 
@@ -92,9 +95,12 @@ namespace FactuurX
         //when customer is selected
         public void OnSelectedCustomer(object source, CustomEventArgs customEventArgs)
         {
-            selectedCustomer.name = customEventArgs.text;
+            selectedCustomer = customEventArgs.customer;
 
             TXT_CustomerName.Text = selectedCustomer.name;
+            TXT_Street.Text = selectedCustomer.street;
+            TXT_Municipality.Text = selectedCustomer.municipality;
+            TXT_btwNumber.Text = selectedCustomer.BTWnumber.ToString();
         }
 
         private void TXT_CustomerName_TextChanged(object sender, EventArgs e)
@@ -136,7 +142,9 @@ namespace FactuurX
         {
             Item item = customEventArgs.item;
 
-            dataTable.Rows.Add(item.name,item.referenceNumber,item.price);
+            double totalPrice = double.Parse(customEventArgs.amount) * double.Parse(item.price);
+
+            dataTable.Rows.Add(item.name, item.referenceNumber,customEventArgs.amount, item.price, totalPrice);
 
             DGV_Items.DataSource = dataTable;
         }
@@ -246,48 +254,107 @@ namespace FactuurX
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.Load(path);
 
-            var table = doc.DocumentNode.SelectSingleNode("//table");
+            var table = doc.GetElementbyId("items");
 
             double totalPrice = 0;
-            int counter = 0;
-            for (int r = 0; r < DGV_Items.Rows.Count - 1; r++)
+            int counter = 1;
+
+            HtmlNodeCollection rows = table.SelectNodes("//tr");
+
+            for (int r = 0; r < DGV_Items.Rows.Count -1; r++)
             {
-                DataGridViewRow dgv_row = DGV_Items.Rows[r];
-                table.AppendChild(HtmlNode.CreateNode("<tr id="+counter.ToString()+"></tr>"));
-                var row = doc.GetElementbyId(counter.ToString());
+                    DataGridViewRow dgv_row = DGV_Items.Rows[r];
+                    table.InsertAfter(HtmlNode.CreateNode("<tr id=" + counter.ToString() + "></tr>"), doc.GetElementbyId("0") );
+                    var row = doc.GetElementbyId(counter.ToString());
 
-                //naam
-                row.AppendChild(HtmlNode.CreateNode("<th>"+ dgv_row.Cells["naam"].Value + "</th>"));
-                //refrentie nummer
-                row.AppendChild(HtmlNode.CreateNode("<th>" + dgv_row.Cells["naam"].Value + "</th>"));
-                //prijs
-                row.AppendChild(HtmlNode.CreateNode("<th>" + dgv_row.Cells["prijs"].Value + "</th>"));
+                    //row.AppendChild(HtmlNode.CreateNode("<th>"+ dgv_row.Cells["naam"].Value + "</th>"));
 
-                string price = (string)dgv_row.Cells["prijs"].Value;
-                totalPrice += double.Parse(price);
+                    //artikel
+                    row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["referentie nummer"].Value + "</td>"));
 
+                    //beschijving
+                    row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["naam"].Value + "</td>"));
+                    //aantal
+                    row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["aantal"].Value + "</td>"));
+                    //eenheidprijs
+                    row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["eenheidprijs"].Value + "</td>"));
+                    //bedrag
+                    row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["prijs"].Value + "</td>"));
+
+                    string price = dgv_row.Cells["prijs"].Value.ToString();
+                    totalPrice += double.Parse(price);
+                
                 counter++;
             }
-            table.AppendChild(HtmlNode.CreateNode("<tr id='total price'></tr>"));
+            //add customer data
+            var customerTable = doc.GetElementbyId("customer");
+            customerTable.AppendChild(HtmlNode.CreateNode("<p>" + selectedCustomer.name + "</p>"));
+            customerTable.AppendChild(HtmlNode.CreateNode("<p>" + selectedCustomer.street + "</p>"));
+            customerTable.AppendChild(HtmlNode.CreateNode("<p>" + selectedCustomer.municipality + "</p>"));
+            customerTable.AppendChild(HtmlNode.CreateNode("<p>" + selectedCustomer.BTWnumber + "</p>"));
+
+            //total price calculations
+            var TotalExcl = doc.GetElementbyId("total-priceExcl");
+            var ParentNode = TotalExcl.ParentNode;
+            ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + totalPrice + "</td>"),TotalExcl);
+
+            var btw = doc.GetElementbyId("BTW");
+            ParentNode = btw.ParentNode;
+            ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + (totalPrice / 100) * 21 + "</td>"), btw);
+
+            var total = doc.GetElementbyId("total-priceIncl");
+            ParentNode = total.ParentNode;
+            ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + (((totalPrice / 100) * 21) + totalPrice) + "</td>"), total);
+
+            /*table.AppendChild(HtmlNode.CreateNode("<tr id='total price'></tr>"));
             var lastRow = doc.GetElementbyId("total price");
             lastRow.AppendChild(HtmlNode.CreateNode("<th></th>"));
             lastRow.AppendChild(HtmlNode.CreateNode("<th>Totaal:</th>"));
-            lastRow.AppendChild(HtmlNode.CreateNode("<th>"+totalPrice+"</th>"));
+            lastRow.AppendChild(HtmlNode.CreateNode("<th>"+totalPrice+"</th>"));*/
 
 
 
 
 
             WB_Preview.DocumentText = doc.DocumentNode.OuterHtml;
-            PageSize pageSize = new PageSize();
-
-            PdfDocument pdf = PdfGenerator.GeneratePdf(doc.DocumentNode.OuterHtml,PageSize.Letter);
-            pdf.Save("F:\\FactuurX\\generatedpdfs\\document.pdf");
+           
         }
 
         public void GenerateInvoiceHtml(string template)
         {
 
+        }
+
+        //export invoice to odf
+        private void exporteerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IronPdf.HtmlToPdf Renderer = new IronPdf.HtmlToPdf();
+
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "PDF (*.pdf)|*.pdf";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    var fileStream = myStream as FileStream;
+
+                    Console.WriteLine(fileStream.Name + "path");
+
+                    string path = fileStream.Name;
+
+                    fileStream.Close();
+                    myStream.Close();
+
+                    Renderer.RenderHtmlAsPdf(WB_Preview.DocumentText).SaveAs(path);
+
+                    
+                }
+            }
         }
     }
 }

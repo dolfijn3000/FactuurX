@@ -55,8 +55,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.DGV_Items = new System.Windows.Forms.DataGridView();
             this.TAB_Preview = new System.Windows.Forms.TabPage();
-            this.WB_Preview = new System.Windows.Forms.WebBrowser();
             this.BTN_Generate = new System.Windows.Forms.Button();
+            this.WB_Preview = new System.Windows.Forms.WebBrowser();
+            this.TXT_btwNumber = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TXT_Municipality = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TXT_Street = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TAB_Main.SuspendLayout();
             this.TABP_General.SuspendLayout();
@@ -145,8 +151,9 @@
             // exporteerToolStripMenuItem
             // 
             this.exporteerToolStripMenuItem.Name = "exporteerToolStripMenuItem";
-            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exporteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exporteerToolStripMenuItem.Text = "exporteer";
+            this.exporteerToolStripMenuItem.Click += new System.EventHandler(this.exporteerToolStripMenuItem_Click);
             // 
             // profielToolStripMenuItem
             // 
@@ -206,6 +213,12 @@
             // 
             // TABP_General
             // 
+            this.TABP_General.Controls.Add(this.TXT_btwNumber);
+            this.TABP_General.Controls.Add(this.label4);
+            this.TABP_General.Controls.Add(this.TXT_Municipality);
+            this.TABP_General.Controls.Add(this.label5);
+            this.TABP_General.Controls.Add(this.TXT_Street);
+            this.TABP_General.Controls.Add(this.label6);
             this.TABP_General.Controls.Add(this.button2);
             this.TABP_General.Controls.Add(this.button1);
             this.TABP_General.Controls.Add(this.TXT_CustomerName);
@@ -243,7 +256,7 @@
             this.TXT_CustomerName.Location = new System.Drawing.Point(46, 53);
             this.TXT_CustomerName.Name = "TXT_CustomerName";
             this.TXT_CustomerName.ReadOnly = true;
-            this.TXT_CustomerName.Size = new System.Drawing.Size(320, 20);
+            this.TXT_CustomerName.Size = new System.Drawing.Size(564, 20);
             this.TXT_CustomerName.TabIndex = 1;
             this.TXT_CustomerName.TextChanged += new System.EventHandler(this.TXT_CustomerName_TextChanged);
             // 
@@ -310,15 +323,6 @@
             this.TAB_Preview.Text = "factuur";
             this.TAB_Preview.UseVisualStyleBackColor = true;
             // 
-            // WB_Preview
-            // 
-            this.WB_Preview.Location = new System.Drawing.Point(6, 35);
-            this.WB_Preview.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WB_Preview.Name = "WB_Preview";
-            this.WB_Preview.Size = new System.Drawing.Size(1402, 466);
-            this.WB_Preview.TabIndex = 0;
-            this.WB_Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB_Preview_DocumentCompleted);
-            // 
             // BTN_Generate
             // 
             this.BTN_Generate.Location = new System.Drawing.Point(3, 6);
@@ -328,6 +332,66 @@
             this.BTN_Generate.Text = "generate";
             this.BTN_Generate.UseVisualStyleBackColor = true;
             this.BTN_Generate.Click += new System.EventHandler(this.BTN_Generate_Click);
+            // 
+            // WB_Preview
+            // 
+            this.WB_Preview.Location = new System.Drawing.Point(6, 35);
+            this.WB_Preview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WB_Preview.Name = "WB_Preview";
+            this.WB_Preview.Size = new System.Drawing.Size(1402, 466);
+            this.WB_Preview.TabIndex = 0;
+            this.WB_Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB_Preview_DocumentCompleted);
+            // 
+            // TXT_btwNumber
+            // 
+            this.TXT_btwNumber.Location = new System.Drawing.Point(85, 131);
+            this.TXT_btwNumber.Name = "TXT_btwNumber";
+            this.TXT_btwNumber.ReadOnly = true;
+            this.TXT_btwNumber.Size = new System.Drawing.Size(525, 20);
+            this.TXT_btwNumber.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 134);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "BTW nummer";
+            // 
+            // TXT_Municipality
+            // 
+            this.TXT_Municipality.Location = new System.Drawing.Point(64, 105);
+            this.TXT_Municipality.Name = "TXT_Municipality";
+            this.TXT_Municipality.ReadOnly = true;
+            this.TXT_Municipality.Size = new System.Drawing.Size(546, 20);
+            this.TXT_Municipality.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "gemeente";
+            // 
+            // TXT_Street
+            // 
+            this.TXT_Street.Location = new System.Drawing.Point(46, 79);
+            this.TXT_Street.Name = "TXT_Street";
+            this.TXT_Street.ReadOnly = true;
+            this.TXT_Street.Size = new System.Drawing.Size(564, 20);
+            this.TXT_Street.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(4, 82);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "straat";
             // 
             // Form1
             // 
@@ -385,6 +449,12 @@
         private System.Windows.Forms.TabPage TAB_Preview;
         private System.Windows.Forms.WebBrowser WB_Preview;
         private System.Windows.Forms.Button BTN_Generate;
+        private System.Windows.Forms.TextBox TXT_btwNumber;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TXT_Municipality;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TXT_Street;
+        private System.Windows.Forms.Label label6;
     }
 }
 

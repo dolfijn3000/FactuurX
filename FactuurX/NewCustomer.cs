@@ -25,8 +25,14 @@ namespace FactuurX
         public EventHandler<CustomEventArgs> AddedCustomer;
         private void BTN_Ok_Click(object sender, EventArgs e)
         {
+            Customer customer = new Customer();
+            customer.name = TXT_Name.Text;
+            customer.street = TXT_Street.Text;
+            customer.municipality = TXT_Municipality.Text;
+            customer.BTWnumber = TXT_btwNumber.Text;
+
             if (AddedCustomer != null)
-                AddedCustomer(this, new CustomEventArgs() { text = TXT_Name.Text });
+                AddedCustomer(this, new CustomEventArgs() { customer = customer });
             this.Close();
         }
     }

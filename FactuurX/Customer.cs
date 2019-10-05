@@ -9,5 +9,8 @@ namespace FactuurX
     public class Customer
     {
         public string name;
+        public string street;
+        public string municipality;
+        public string BTWnumber;
     }
 }

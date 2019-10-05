@@ -44,6 +44,9 @@
     <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
     </Reference>
+    <Reference Include="IronPdf, Version=2019.7.0.21100, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPdf.2019.7.0\lib\net40\IronPdf.dll</HintPath>
+    </Reference>
     <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
     </Reference>
@@ -52,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>

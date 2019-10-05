@@ -39,6 +39,8 @@
             this.BTN_Search = new System.Windows.Forms.Button();
             this.BTN_Add = new System.Windows.Forms.Button();
             this.BTN_Delete = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TXT_Amount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -136,11 +138,29 @@
             this.BTN_Delete.Text = "Verwijder";
             this.BTN_Delete.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(285, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Aantal:";
+            // 
+            // TXT_Amount
+            // 
+            this.TXT_Amount.Location = new System.Drawing.Point(331, 121);
+            this.TXT_Amount.Name = "TXT_Amount";
+            this.TXT_Amount.Size = new System.Drawing.Size(100, 20);
+            this.TXT_Amount.TabIndex = 13;
+            // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 390);
+            this.Controls.Add(this.TXT_Amount);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_Delete);
             this.Controls.Add(this.BTN_Add);
             this.Controls.Add(this.BTN_Search);
@@ -173,5 +193,7 @@
         private System.Windows.Forms.Button BTN_Add;
         private System.Windows.Forms.Button BTN_Delete;
         public System.Windows.Forms.ListBox LB_Items;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TXT_Amount;
     }
 }

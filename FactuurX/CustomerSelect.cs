@@ -21,7 +21,7 @@ namespace FactuurX
         private void BTN_Ok_Click(object sender, EventArgs e)
         {
             if (Selected != null)
-                Selected(this, new CustomEventArgs() {text = LB_Customers.SelectedItem.ToString()});
+                Selected(this, new CustomEventArgs() { customer = Form1.selectedProfile.customers.Find(x => x.name == LB_Customers.SelectedItem.ToString()) });
             this.Close();
         }
     }

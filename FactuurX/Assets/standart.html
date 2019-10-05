@@ -4,22 +4,108 @@
     <style>
         table {
         border-collapse: collapse;
-        }
-
-        table, th, td {
         border: 1px solid black;
         }
 
+        table, th, td {
+            border: 1px solid black;
+        }
+        table.info{
+        width: 40%;
+        border: 1px solid black;
+        float: right;
+        margin-bottom: 20px;
+
+        }
+
+        .company-name{
+            font-size: 40px;
+        }
+
+        .items{
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        .items td{
+            text-align: center;
+        }
+
+        .company-info{
+
+        }
+        .firstline th{
+            border: 0;
+        }
     </style>
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>naam</th>
-            <th>referentie nummer</th>
-            <th>prijs</th>
 
+    <img src="https://i.imgur.com/y6SBqHe.jpg" class="logo">
+
+    <p id="company-name" class="company-name">Bus Solutions bvba</p>
+
+    <table id="info" class="info">
+
+            <tr>
+
+                <td id="customer"class="customer">
+
+                </td>
+            </tr>
+
+    </table>
+
+    <div class="company-info">
+        <p>Martelarenstraat 26</p>
+        <p>3370 Boutersem</p>
+        <p>0491/56 11 56</p>
+        <p>bussolutions@telenet.be</p>
+    </div>
+
+   
+
+    <table id="items" class="items">
+        <tr class="firstline">
+            <th>Factuur nr:</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Datum:</th>
+
+        </tr>
+
+        <tr id="0">
+            <td>Artikel</td>
+            <td>Beschrijving</td>
+            <td>Aantal</td>
+            <td>Eenheidpr</td>
+            <td>Bedrag</td>
+        </tr>
+
+        <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Totaal:</td>
+                <td id="total-priceExcl"></td>
+        </tr>
+
+        <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>BTW 21%</td>
+                <td id="BTW"></td>
+        </tr>
+
+        <tr>
+                <td></td>
+                <td>Betalingsvoorwaarden: 30 dagen</td>
+                <td></td>
+                <td>Totaal incl</td>
+                <td id="total-priceIncl"></td>
         </tr>
 
     </table>
