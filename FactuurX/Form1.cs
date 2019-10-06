@@ -9,6 +9,7 @@ using PdfSharp.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using PdfSharp;
 using IronPdf;
+using PuppeteerSharp;
 
 namespace FactuurX
 {
@@ -28,16 +29,6 @@ namespace FactuurX
         public Form1()
         {
             InitializeComponent();
-            EventManager eventManager = new EventManager();
-            StartupHandler startupHandler = new StartupHandler();
-            startupHandler.Startup();
-
-            dataTable.Columns.Add("naam", typeof(string));
-            dataTable.Columns.Add("referentie nummer", typeof(string));
-            dataTable.Columns.Add("aantal", typeof(string));
-            dataTable.Columns.Add("eenheidprijs", typeof(string));
-            dataTable.Columns.Add("prijs", typeof(double));
-            eventManager.Setup();
         }
 
         private void bestandToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,7 +74,7 @@ namespace FactuurX
             //add all customers to the list
             foreach(Customer customer in selectedProfile.customers)
             {
-                customerSelect.LB_Customers.Items.Add(customer.name);
+                customerSelect.LB_Customers.Items.Add(customer);
             }
 
             customerSelect.Show();
@@ -118,9 +109,7 @@ namespace FactuurX
         private void OnCreatedItem(object source, CustomEventArgs customEventArgs)
         {
             Item item = new Item();
-            item.name = customEventArgs.texts[0];
-            item.price =customEventArgs.texts[1];
-            item.referenceNumber = customEventArgs.texts[2];
+            item = customEventArgs.item;
 
             selectedProfile.Items.Add(item);
         }
@@ -142,9 +131,14 @@ namespace FactuurX
         {
             Item item = customEventArgs.item;
 
-            double totalPrice = double.Parse(customEventArgs.amount) * double.Parse(item.price);
+            double totalPrice = 0;
 
-            dataTable.Rows.Add(item.name, item.referenceNumber,customEventArgs.amount, item.price, totalPrice);
+            if (item.price != null && item.price != "")
+            {
+                totalPrice = double.Parse(customEventArgs.amount) * double.Parse(item.price);
+            }
+
+            dataTable.Rows.Add(item.name, item.referenceNumber,customEventArgs.amount, item.price + item.unit, totalPrice);
 
             DGV_Items.DataSource = dataTable;
         }
@@ -186,12 +180,14 @@ namespace FactuurX
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
                         fileContent = reader.ReadToEnd();
+                        LoadHandler loadHandler = new LoadHandler();
+                        loadHandler.LoadProfile(filePath);
+                        CheckForProfile();
                     }
                 }
             }
 
-            LoadHandler loadHandler = new LoadHandler();
-            loadHandler.LoadProfile(filePath);
+           
 
         }
 
@@ -218,12 +214,12 @@ namespace FactuurX
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
                         fileContent = reader.ReadToEnd();
+                        LoadHandler loadHandler = new LoadHandler();
+                        loadHandler.LoadInvoice(filePath);
                     }
                 }
             }
 
-            LoadHandler loadHandler = new LoadHandler();
-            loadHandler.LoadInvoice(filePath);
 
             Refresh();
         }
@@ -249,7 +245,16 @@ namespace FactuurX
         //generate html code for invoice
         private void BTN_Generate_Click(object sender, EventArgs e)
         {
-            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Assets\standart.html");
+            string path = "";
+            if (CB_Language.Text == "nederlands" || CB_Language.Text == "")
+            {
+               path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Assets\standart.html");
+            }
+
+            if (CB_Language.Text == "frans")
+            {
+                path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Assets\standartfrans.html");
+            }
 
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.Load(path);
@@ -282,7 +287,10 @@ namespace FactuurX
                     row.AppendChild(HtmlNode.CreateNode("<td>" + dgv_row.Cells["prijs"].Value + "</td>"));
 
                     string price = dgv_row.Cells["prijs"].Value.ToString();
-                    totalPrice += double.Parse(price);
+                    if (price != "")
+                    {
+                        totalPrice += double.Parse(price);
+                    }
                 
                 counter++;
             }
@@ -298,23 +306,24 @@ namespace FactuurX
             var ParentNode = TotalExcl.ParentNode;
             ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + totalPrice + "</td>"),TotalExcl);
 
+            //btw calculation
             var btw = doc.GetElementbyId("BTW");
             ParentNode = btw.ParentNode;
             ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + (totalPrice / 100) * 21 + "</td>"), btw);
 
+            //total calculation
             var total = doc.GetElementbyId("total-priceIncl");
             ParentNode = total.ParentNode;
             ParentNode.ReplaceChild(HtmlNode.CreateNode("<td>" + (((totalPrice / 100) * 21) + totalPrice) + "</td>"), total);
 
-            /*table.AppendChild(HtmlNode.CreateNode("<tr id='total price'></tr>"));
-            var lastRow = doc.GetElementbyId("total price");
-            lastRow.AppendChild(HtmlNode.CreateNode("<th></th>"));
-            lastRow.AppendChild(HtmlNode.CreateNode("<th>Totaal:</th>"));
-            lastRow.AppendChild(HtmlNode.CreateNode("<th>"+totalPrice+"</th>"));*/
+            //date and invoice number
+            var invoiceNumber = doc.GetElementbyId("invoicenumber");
+            ParentNode = invoiceNumber.ParentNode;
+            ParentNode.ReplaceChild(HtmlNode.CreateNode("<td> Factuur nr:" + TXT_InvoiceNumber.Text + "</td>"), invoiceNumber);
 
-
-
-
+            var date = doc.GetElementbyId("date");
+            ParentNode = date.ParentNode;
+            ParentNode.ReplaceChild(HtmlNode.CreateNode("<td> Datum:" + TXT_Date.Text + "</td>"), date);
 
             WB_Preview.DocumentText = doc.DocumentNode.OuterHtml;
            
@@ -329,7 +338,7 @@ namespace FactuurX
         private void exporteerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IronPdf.HtmlToPdf Renderer = new IronPdf.HtmlToPdf();
-
+            BTN_Generate.PerformClick();
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -350,10 +359,61 @@ namespace FactuurX
                     fileStream.Close();
                     myStream.Close();
 
-                    Renderer.RenderHtmlAsPdf(WB_Preview.DocumentText).SaveAs(path);
-
-                    
+                    Renderer.RenderHtmlAsPdf(WB_Preview.DocumentText).SaveAs(path);               
                 }
+            }
+        }
+
+        private void BTN_Extra_Click(object sender, EventArgs e)
+        {
+            Extra extra = new Extra();
+            extra.Show();
+            extra.AddedExtra += this.OnCreatedExtra;
+        }
+
+        public void OnCreatedExtra(object source, CustomEventArgs customEventArgs)
+        {
+            dataTable.Rows.Add(customEventArgs.text, string.Empty, string.Empty, string.Empty, null);
+            DGV_Items.DataSource = dataTable;
+        }
+
+        private void klantenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            UpdateHandler updateHandler = new UpdateHandler();
+            if(updateHandler.CheckForUpdate())
+            {
+
+            }
+
+            EventManager eventManager = new EventManager();
+            StartupHandler startupHandler = new StartupHandler();
+            startupHandler.Startup();
+
+            dataTable.Columns.Add("naam", typeof(string));
+            dataTable.Columns.Add("referentie nummer", typeof(string));
+            dataTable.Columns.Add("aantal", typeof(string));
+            dataTable.Columns.Add("eenheidprijs", typeof(string));
+            dataTable.Columns.Add("prijs", typeof(double));
+            eventManager.Setup();
+            CheckForProfile();
+        }
+
+        public void CheckForProfile()
+        {
+            if(selectedProfile != null)
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                BTN_Extra.Enabled = true;
+                BTN_Generate.Enabled = true;
             }
         }
     }

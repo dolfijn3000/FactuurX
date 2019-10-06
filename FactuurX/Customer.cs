@@ -12,5 +12,10 @@ namespace FactuurX
         public string street;
         public string municipality;
         public string BTWnumber;
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }

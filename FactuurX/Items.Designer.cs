@@ -40,7 +40,11 @@
             this.BTN_Add = new System.Windows.Forms.Button();
             this.BTN_Delete = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.TXT_Amount = new System.Windows.Forms.TextBox();
+            this.TXT_Unit = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.NUD_Amount = new System.Windows.Forms.NumericUpDown();
+            this.BTN_Edit = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Amount)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,7 +61,7 @@
             this.TXT_Name.Location = new System.Drawing.Point(326, 23);
             this.TXT_Name.Name = "TXT_Name";
             this.TXT_Name.ReadOnly = true;
-            this.TXT_Name.Size = new System.Drawing.Size(263, 20);
+            this.TXT_Name.Size = new System.Drawing.Size(319, 20);
             this.TXT_Name.TabIndex = 1;
             // 
             // TXT_referenceNumber
@@ -82,7 +86,7 @@
             this.TXT_Price.Location = new System.Drawing.Point(326, 78);
             this.TXT_Price.Name = "TXT_Price";
             this.TXT_Price.ReadOnly = true;
-            this.TXT_Price.Size = new System.Drawing.Size(263, 20);
+            this.TXT_Price.Size = new System.Drawing.Size(319, 20);
             this.TXT_Price.TabIndex = 5;
             // 
             // label3
@@ -109,6 +113,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(186, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // BTN_Search
             // 
@@ -121,6 +126,7 @@
             // 
             // BTN_Add
             // 
+            this.BTN_Add.Enabled = false;
             this.BTN_Add.Location = new System.Drawing.Point(579, 355);
             this.BTN_Add.Name = "BTN_Add";
             this.BTN_Add.Size = new System.Drawing.Size(75, 23);
@@ -137,29 +143,60 @@
             this.BTN_Delete.TabIndex = 11;
             this.BTN_Delete.Text = "Verwijder";
             this.BTN_Delete.UseVisualStyleBackColor = true;
+            this.BTN_Delete.Click += new System.EventHandler(this.BTN_Delete_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(285, 124);
+            this.label4.Location = new System.Drawing.Point(285, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Aantal:";
             // 
-            // TXT_Amount
+            // TXT_Unit
             // 
-            this.TXT_Amount.Location = new System.Drawing.Point(331, 121);
-            this.TXT_Amount.Name = "TXT_Amount";
-            this.TXT_Amount.Size = new System.Drawing.Size(100, 20);
-            this.TXT_Amount.TabIndex = 13;
+            this.TXT_Unit.Location = new System.Drawing.Point(340, 104);
+            this.TXT_Unit.Name = "TXT_Unit";
+            this.TXT_Unit.ReadOnly = true;
+            this.TXT_Unit.Size = new System.Drawing.Size(305, 20);
+            this.TXT_Unit.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(285, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Eenheid:";
+            // 
+            // NUD_Amount
+            // 
+            this.NUD_Amount.Location = new System.Drawing.Point(331, 130);
+            this.NUD_Amount.Name = "NUD_Amount";
+            this.NUD_Amount.Size = new System.Drawing.Size(120, 20);
+            this.NUD_Amount.TabIndex = 16;
+            // 
+            // BTN_Edit
+            // 
+            this.BTN_Edit.Location = new System.Drawing.Point(286, 355);
+            this.BTN_Edit.Name = "BTN_Edit";
+            this.BTN_Edit.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Edit.TabIndex = 17;
+            this.BTN_Edit.Text = "bewerk";
+            this.BTN_Edit.UseVisualStyleBackColor = true;
+            this.BTN_Edit.Click += new System.EventHandler(this.BTN_Edit_Click);
             // 
             // Items
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 390);
-            this.Controls.Add(this.TXT_Amount);
+            this.Controls.Add(this.BTN_Edit);
+            this.Controls.Add(this.NUD_Amount);
+            this.Controls.Add(this.TXT_Unit);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_Delete);
             this.Controls.Add(this.BTN_Add);
@@ -175,6 +212,7 @@
             this.Name = "Items";
             this.Text = "Items";
             this.Load += new System.EventHandler(this.Items_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Amount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,6 +232,9 @@
         private System.Windows.Forms.Button BTN_Delete;
         public System.Windows.Forms.ListBox LB_Items;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TXT_Amount;
+        private System.Windows.Forms.TextBox TXT_Unit;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown NUD_Amount;
+        private System.Windows.Forms.Button BTN_Edit;
     }
 }

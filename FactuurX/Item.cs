@@ -11,7 +11,8 @@ namespace FactuurX
         public string name;
         public string referenceNumber;
         public string price;
-        
+        public string unit;
+
         public override string ToString()
         {
             return name;

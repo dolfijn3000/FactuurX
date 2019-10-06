@@ -9,6 +9,6 @@ namespace FactuurX
     public class Settings
     {
         public string LastProfilePath;
-
+        public string version = "0.0.1";
     }
 }

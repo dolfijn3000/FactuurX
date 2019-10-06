@@ -35,6 +35,8 @@
             this.TXT_Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BTN_Ok = new System.Windows.Forms.Button();
+            this.TXT_Unit = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TXT_Price
@@ -57,7 +59,7 @@
             // 
             this.TXT_referenceNumber.Location = new System.Drawing.Point(111, 41);
             this.TXT_referenceNumber.Name = "TXT_referenceNumber";
-            this.TXT_referenceNumber.Size = new System.Drawing.Size(263, 20);
+            this.TXT_referenceNumber.Size = new System.Drawing.Size(207, 20);
             this.TXT_referenceNumber.TabIndex = 9;
             // 
             // label2
@@ -95,11 +97,29 @@
             this.BTN_Ok.UseVisualStyleBackColor = true;
             this.BTN_Ok.Click += new System.EventHandler(this.BTN_Ok_Click);
             // 
+            // TXT_Unit
+            // 
+            this.TXT_Unit.Location = new System.Drawing.Point(65, 93);
+            this.TXT_Unit.Name = "TXT_Unit";
+            this.TXT_Unit.Size = new System.Drawing.Size(253, 20);
+            this.TXT_Unit.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "eenheid";
+            // 
             // NewItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 183);
+            this.Controls.Add(this.TXT_Unit);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BTN_Ok);
             this.Controls.Add(this.TXT_Price);
             this.Controls.Add(this.label3);
@@ -109,19 +129,21 @@
             this.Controls.Add(this.label1);
             this.Name = "NewItem";
             this.Text = "NewItem";
+            this.Load += new System.EventHandler(this.NewItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox TXT_Price;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TXT_referenceNumber;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TXT_Name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BTN_Ok;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox TXT_Price;
+        public System.Windows.Forms.TextBox TXT_referenceNumber;
+        public System.Windows.Forms.TextBox TXT_Name;
+        public System.Windows.Forms.TextBox TXT_Unit;
     }
 }

@@ -35,7 +35,10 @@ namespace FactuurX.Handlers
             loadHandler.LoadSettings();
             if (Form1.settings.LastProfilePath != null)
             {
-                loadHandler.LoadProfile(Form1.settings.LastProfilePath);
+                if (Form1.settings.LastProfilePath != "")
+                {
+                    loadHandler.LoadProfile(Form1.settings.LastProfilePath);
+                }
             }
 
 

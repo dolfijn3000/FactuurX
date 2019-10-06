@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nieuwToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,10 +40,14 @@
             this.nieuwToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selecteerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opslaanToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.klantenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TAB_Main = new System.Windows.Forms.TabControl();
             this.TABP_General = new System.Windows.Forms.TabPage();
+            this.TXT_btwNumber = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TXT_Municipality = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TXT_Street = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.TXT_CustomerName = new System.Windows.Forms.TextBox();
@@ -57,12 +59,13 @@
             this.TAB_Preview = new System.Windows.Forms.TabPage();
             this.BTN_Generate = new System.Windows.Forms.Button();
             this.WB_Preview = new System.Windows.Forms.WebBrowser();
-            this.TXT_btwNumber = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TXT_Municipality = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.TXT_Street = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TXT_InvoiceNumber = new System.Windows.Forms.TextBox();
+            this.TXT_Date = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.BTN_Extra = new System.Windows.Forms.Button();
+            this.Taal = new System.Windows.Forms.Label();
+            this.CB_Language = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.TAB_Main.SuspendLayout();
             this.TABP_General.SuspendLayout();
@@ -70,24 +73,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).BeginInit();
             this.TAB_Preview.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1299, 564);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Versie:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1344, 564);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "PROTOTYPE 0.1";
             // 
             // menuStrip1
             // 
@@ -160,9 +145,7 @@
             this.profielToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nieuwToolStripMenuItem1,
             this.selecteerToolStripMenuItem,
-            this.opslaanToolStripMenuItem1,
-            this.itemsToolStripMenuItem,
-            this.klantenToolStripMenuItem});
+            this.opslaanToolStripMenuItem1});
             this.profielToolStripMenuItem.Name = "profielToolStripMenuItem";
             this.profielToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.profielToolStripMenuItem.Text = "Profiel";
@@ -170,38 +153,28 @@
             // nieuwToolStripMenuItem1
             // 
             this.nieuwToolStripMenuItem1.Name = "nieuwToolStripMenuItem1";
-            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.nieuwToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.nieuwToolStripMenuItem1.Text = "nieuw";
             this.nieuwToolStripMenuItem1.Click += new System.EventHandler(this.NieuwToolStripMenuItem1_Click);
             // 
             // selecteerToolStripMenuItem
             // 
             this.selecteerToolStripMenuItem.Name = "selecteerToolStripMenuItem";
-            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.selecteerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selecteerToolStripMenuItem.Text = "open";
             this.selecteerToolStripMenuItem.Click += new System.EventHandler(this.selecteerToolStripMenuItem_Click);
             // 
             // opslaanToolStripMenuItem1
             // 
             this.opslaanToolStripMenuItem1.Name = "opslaanToolStripMenuItem1";
-            this.opslaanToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.opslaanToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.opslaanToolStripMenuItem1.Text = "opslaan";
             this.opslaanToolStripMenuItem1.Click += new System.EventHandler(this.opslaanToolStripMenuItem1_Click);
             // 
-            // itemsToolStripMenuItem
-            // 
-            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.itemsToolStripMenuItem.Text = "items";
-            // 
-            // klantenToolStripMenuItem
-            // 
-            this.klantenToolStripMenuItem.Name = "klantenToolStripMenuItem";
-            this.klantenToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.klantenToolStripMenuItem.Text = "klanten";
-            // 
             // TAB_Main
             // 
+            this.TAB_Main.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.TAB_Main.Controls.Add(this.TABP_General);
             this.TAB_Main.Controls.Add(this.TABP_Items);
             this.TAB_Main.Controls.Add(this.TAB_Preview);
@@ -230,117 +203,6 @@
             this.TABP_General.TabIndex = 0;
             this.TABP_General.Text = "Algemeen";
             this.TABP_General.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(121, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Maak nieuwe klant";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(9, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Selecteer klant";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TXT_CustomerName
-            // 
-            this.TXT_CustomerName.Location = new System.Drawing.Point(46, 53);
-            this.TXT_CustomerName.Name = "TXT_CustomerName";
-            this.TXT_CustomerName.ReadOnly = true;
-            this.TXT_CustomerName.Size = new System.Drawing.Size(564, 20);
-            this.TXT_CustomerName.TabIndex = 1;
-            this.TXT_CustomerName.TextChanged += new System.EventHandler(this.TXT_CustomerName_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Klant:";
-            // 
-            // TABP_Items
-            // 
-            this.TABP_Items.Controls.Add(this.button4);
-            this.TABP_Items.Controls.Add(this.button3);
-            this.TABP_Items.Controls.Add(this.DGV_Items);
-            this.TABP_Items.Location = new System.Drawing.Point(4, 22);
-            this.TABP_Items.Name = "TABP_Items";
-            this.TABP_Items.Padding = new System.Windows.Forms.Padding(3);
-            this.TABP_Items.Size = new System.Drawing.Size(1414, 507);
-            this.TABP_Items.TabIndex = 1;
-            this.TABP_Items.Text = "Items";
-            this.TABP_Items.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(111, 7);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Maak nieuw item";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(7, 7);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Voeg item toe";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // DGV_Items
-            // 
-            this.DGV_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Items.Location = new System.Drawing.Point(4, 73);
-            this.DGV_Items.Name = "DGV_Items";
-            this.DGV_Items.Size = new System.Drawing.Size(1404, 428);
-            this.DGV_Items.TabIndex = 0;
-            this.DGV_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // TAB_Preview
-            // 
-            this.TAB_Preview.Controls.Add(this.BTN_Generate);
-            this.TAB_Preview.Controls.Add(this.WB_Preview);
-            this.TAB_Preview.Location = new System.Drawing.Point(4, 22);
-            this.TAB_Preview.Name = "TAB_Preview";
-            this.TAB_Preview.Padding = new System.Windows.Forms.Padding(3);
-            this.TAB_Preview.Size = new System.Drawing.Size(1414, 507);
-            this.TAB_Preview.TabIndex = 2;
-            this.TAB_Preview.Text = "factuur";
-            this.TAB_Preview.UseVisualStyleBackColor = true;
-            // 
-            // BTN_Generate
-            // 
-            this.BTN_Generate.Location = new System.Drawing.Point(3, 6);
-            this.BTN_Generate.Name = "BTN_Generate";
-            this.BTN_Generate.Size = new System.Drawing.Size(75, 23);
-            this.BTN_Generate.TabIndex = 1;
-            this.BTN_Generate.Text = "generate";
-            this.BTN_Generate.UseVisualStyleBackColor = true;
-            this.BTN_Generate.Click += new System.EventHandler(this.BTN_Generate_Click);
-            // 
-            // WB_Preview
-            // 
-            this.WB_Preview.Location = new System.Drawing.Point(6, 35);
-            this.WB_Preview.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WB_Preview.Name = "WB_Preview";
-            this.WB_Preview.Size = new System.Drawing.Size(1402, 466);
-            this.WB_Preview.TabIndex = 0;
-            this.WB_Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB_Preview_DocumentCompleted);
             // 
             // TXT_btwNumber
             // 
@@ -393,18 +255,206 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "straat";
             // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(121, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Maak nieuwe klant";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(9, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Selecteer klant";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TXT_CustomerName
+            // 
+            this.TXT_CustomerName.Location = new System.Drawing.Point(46, 53);
+            this.TXT_CustomerName.Name = "TXT_CustomerName";
+            this.TXT_CustomerName.ReadOnly = true;
+            this.TXT_CustomerName.Size = new System.Drawing.Size(564, 20);
+            this.TXT_CustomerName.TabIndex = 1;
+            this.TXT_CustomerName.TextChanged += new System.EventHandler(this.TXT_CustomerName_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Klant:";
+            // 
+            // TABP_Items
+            // 
+            this.TABP_Items.Controls.Add(this.BTN_Extra);
+            this.TABP_Items.Controls.Add(this.button4);
+            this.TABP_Items.Controls.Add(this.button3);
+            this.TABP_Items.Controls.Add(this.DGV_Items);
+            this.TABP_Items.Location = new System.Drawing.Point(4, 22);
+            this.TABP_Items.Name = "TABP_Items";
+            this.TABP_Items.Padding = new System.Windows.Forms.Padding(3);
+            this.TABP_Items.Size = new System.Drawing.Size(1414, 507);
+            this.TABP_Items.TabIndex = 1;
+            this.TABP_Items.Text = "Items";
+            this.TABP_Items.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(111, 7);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Maak nieuw item";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(7, 7);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Voeg item toe";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // DGV_Items
+            // 
+            this.DGV_Items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Items.Location = new System.Drawing.Point(4, 73);
+            this.DGV_Items.Name = "DGV_Items";
+            this.DGV_Items.Size = new System.Drawing.Size(1404, 428);
+            this.DGV_Items.TabIndex = 0;
+            this.DGV_Items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            // 
+            // TAB_Preview
+            // 
+            this.TAB_Preview.Controls.Add(this.CB_Language);
+            this.TAB_Preview.Controls.Add(this.Taal);
+            this.TAB_Preview.Controls.Add(this.TXT_Date);
+            this.TAB_Preview.Controls.Add(this.label8);
+            this.TAB_Preview.Controls.Add(this.TXT_InvoiceNumber);
+            this.TAB_Preview.Controls.Add(this.label7);
+            this.TAB_Preview.Controls.Add(this.BTN_Generate);
+            this.TAB_Preview.Controls.Add(this.WB_Preview);
+            this.TAB_Preview.Location = new System.Drawing.Point(4, 22);
+            this.TAB_Preview.Name = "TAB_Preview";
+            this.TAB_Preview.Padding = new System.Windows.Forms.Padding(3);
+            this.TAB_Preview.Size = new System.Drawing.Size(1414, 507);
+            this.TAB_Preview.TabIndex = 2;
+            this.TAB_Preview.Text = "factuur";
+            this.TAB_Preview.UseVisualStyleBackColor = true;
+            // 
+            // BTN_Generate
+            // 
+            this.BTN_Generate.Enabled = false;
+            this.BTN_Generate.Location = new System.Drawing.Point(3, 6);
+            this.BTN_Generate.Name = "BTN_Generate";
+            this.BTN_Generate.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Generate.TabIndex = 1;
+            this.BTN_Generate.Text = "generate";
+            this.BTN_Generate.UseVisualStyleBackColor = true;
+            this.BTN_Generate.Click += new System.EventHandler(this.BTN_Generate_Click);
+            // 
+            // WB_Preview
+            // 
+            this.WB_Preview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.WB_Preview.Location = new System.Drawing.Point(6, 35);
+            this.WB_Preview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.WB_Preview.Name = "WB_Preview";
+            this.WB_Preview.Size = new System.Drawing.Size(1402, 466);
+            this.WB_Preview.TabIndex = 0;
+            this.WB_Preview.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WB_Preview_DocumentCompleted);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(84, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "factuur nr";
+            // 
+            // TXT_InvoiceNumber
+            // 
+            this.TXT_InvoiceNumber.Location = new System.Drawing.Point(142, 9);
+            this.TXT_InvoiceNumber.Name = "TXT_InvoiceNumber";
+            this.TXT_InvoiceNumber.Size = new System.Drawing.Size(100, 20);
+            this.TXT_InvoiceNumber.TabIndex = 3;
+            // 
+            // TXT_Date
+            // 
+            this.TXT_Date.Location = new System.Drawing.Point(292, 9);
+            this.TXT_Date.Name = "TXT_Date";
+            this.TXT_Date.Size = new System.Drawing.Size(100, 20);
+            this.TXT_Date.TabIndex = 5;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(248, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Datum";
+            // 
+            // BTN_Extra
+            // 
+            this.BTN_Extra.Enabled = false;
+            this.BTN_Extra.Location = new System.Drawing.Point(193, 7);
+            this.BTN_Extra.Name = "BTN_Extra";
+            this.BTN_Extra.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Extra.TabIndex = 3;
+            this.BTN_Extra.Text = "extra";
+            this.BTN_Extra.UseVisualStyleBackColor = true;
+            this.BTN_Extra.Click += new System.EventHandler(this.BTN_Extra_Click);
+            // 
+            // Taal
+            // 
+            this.Taal.AutoSize = true;
+            this.Taal.Location = new System.Drawing.Point(398, 12);
+            this.Taal.Name = "Taal";
+            this.Taal.Size = new System.Drawing.Size(31, 13);
+            this.Taal.TabIndex = 6;
+            this.Taal.Text = "Taal:";
+            // 
+            // CB_Language
+            // 
+            this.CB_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Language.FormattingEnabled = true;
+            this.CB_Language.Items.AddRange(new object[] {
+            "frans",
+            "nederlands"});
+            this.CB_Language.Location = new System.Drawing.Point(436, 8);
+            this.CB_Language.Name = "CB_Language";
+            this.CB_Language.Size = new System.Drawing.Size(121, 21);
+            this.CB_Language.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1447, 586);
             this.Controls.Add(this.TAB_Main);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Factuur X";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.TAB_Main.ResumeLayout(false);
@@ -413,15 +463,13 @@
             this.TABP_Items.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Items)).EndInit();
             this.TAB_Preview.ResumeLayout(false);
+            this.TAB_Preview.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bestandToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem;
@@ -443,8 +491,6 @@
         private System.Windows.Forms.ToolStripMenuItem profielToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nieuwToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem selecteerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem klantenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opslaanToolStripMenuItem1;
         private System.Windows.Forms.TabPage TAB_Preview;
         private System.Windows.Forms.WebBrowser WB_Preview;
@@ -455,6 +501,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TXT_Street;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TXT_Date;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox TXT_InvoiceNumber;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button BTN_Extra;
+        private System.Windows.Forms.ComboBox CB_Language;
+        private System.Windows.Forms.Label Taal;
     }
 }
 

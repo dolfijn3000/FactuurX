@@ -139,12 +139,12 @@
 
         private System.Windows.Forms.Button BTN_Ok;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TXT_Name;
-        private System.Windows.Forms.TextBox TXT_Street;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TXT_Municipality;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TXT_btwNumber;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox TXT_Name;
+        public System.Windows.Forms.TextBox TXT_Street;
+        public System.Windows.Forms.TextBox TXT_Municipality;
+        public System.Windows.Forms.TextBox TXT_btwNumber;
     }
 }
